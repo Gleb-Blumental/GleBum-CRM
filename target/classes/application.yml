@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: examensarbete
+  datasource:
+    url: jdbc:mysql://localhost:3306/examensarbete
+    username: admin
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
