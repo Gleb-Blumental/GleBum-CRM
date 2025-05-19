@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=crm_test
+    volumes:
+      - mongo-test-data:/data/db
+
+  backend-test:
+    build: ./backend
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/crm_test
+      - SPRING_PROFILES_ACTIVE=test
+    command: ["./mvnw", "test"]
+
+volumes:
+  mongo-test-data:

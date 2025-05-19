@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Idea ignore
+.idea
+.mvn
+
+# Extensions ignore
+.continue
