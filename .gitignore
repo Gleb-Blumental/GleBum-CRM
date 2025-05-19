@@ -398,8 +398,11 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Idea ignore
-.idea
-.mvn
+/.idea/
+/.mvn/
 
 # Extensions ignore
-.continue
+/.env
+/.continue/
+
+src/main/resources/application.yml
