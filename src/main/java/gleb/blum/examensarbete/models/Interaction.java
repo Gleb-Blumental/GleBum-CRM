@@ -5,10 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
-import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
-public class Deal {
+public class Interaction {
     @Id
     @GeneratedValue
     private Long id;
@@ -16,6 +16,7 @@ public class Deal {
     @ManyToOne
     private Customer customer;
 
-    private BigDecimal value;
-    private DealStage stage; // Enum: PROSPECT, NEGOTIATION, CLOSED_WON
+    private LocalDateTime date;
+    private String notes;
+    private InteractionType type; // Enum: CALL, EMAIL, MEETING
 }

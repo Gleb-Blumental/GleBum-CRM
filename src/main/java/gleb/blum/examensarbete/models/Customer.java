@@ -1,30 +1,31 @@
 package gleb.blum.examensarbete.models;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Data
-@Document(collection = "customers")
+@Entity
 public class Customer {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private String email;
     private String phone;
-    private String company;
+
+    @Enumerated(EnumType.STRING)
     private CustomerStatus status;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
-    // You can add more fields as needed
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Interaction> interactions;
 
-    public enum CustomerStatus {
-        LEAD,
-        PROSPECT,
-        ACTIVE,
-        INACTIVE
-    }
+    @OneToMany(mappedBy = "customer")
+    private List<Deal> deals;
+
+    // Timestamps, constructors, getters/setters
 }
