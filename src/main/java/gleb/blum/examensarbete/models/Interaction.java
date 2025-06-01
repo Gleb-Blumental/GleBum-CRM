@@ -1,21 +1,21 @@
 package gleb.blum.examensarbete.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Entity
+@Document(collection = "interactions")
 public class Interaction {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
-    @ManyToOne
+    @DBRef
     private Customer customer;
 
+    @DBRef
+    private Worker employee;  // Renamed to align with diagram's "employee" entity
     private LocalDateTime date;
     private String notes;
     private InteractionType type; // Enum: CALL, EMAIL, MEETING

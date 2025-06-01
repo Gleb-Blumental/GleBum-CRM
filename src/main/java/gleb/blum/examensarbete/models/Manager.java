@@ -6,17 +6,16 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-@Document(collection = "customers")
+
+@Document(collection = "managers")
 @Data
-public class Customer {
+public class Manager {
     @Id
-    private String id;  // C-ID in the diagram
+    private String id;  // M-ID in the diagram
+
     private String name;
     private String email;
-    private String phone;
-    @DBRef
-    private List<Order> orders;
 
     @DBRef
-    private List<Ticket> tickets;
+    private List<Employee> employees;  // Manages employees relationship
 }

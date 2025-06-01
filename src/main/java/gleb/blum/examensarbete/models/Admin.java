@@ -5,18 +5,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-@Document(collection = "customers")
+@Document(collection = "admins")
 @Data
-public class Customer {
+public class Admin {
     @Id
-    private String id;  // C-ID in the diagram
+    private String id;  // A-ID in the diagram
     private String name;
     private String email;
-    private String phone;
-    @DBRef
-    private List<Order> orders;
+    private String dept;  // Department field from the diagram
 
-    @DBRef
-    private List<Ticket> tickets;
+    // The diagram shows admin manages employees and has a connection to CRM
 }

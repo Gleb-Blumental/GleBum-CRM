@@ -1,24 +1,21 @@
 package gleb.blum.examensarbete.models;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Document(collection = "deals")
-public class Deal {
+@Document(collection = "tickets")
+@Data
+public class Ticket {
     @Id
     private String id;
 
+    private LocalDateTime date;
+    private String status;
+
     @DBRef
     private Customer customer;
-
-    private String title;
-    private String description;
-    private BigDecimal value;
-    private DealStage stage;
-    private LocalDateTime createdAt;
-
 }

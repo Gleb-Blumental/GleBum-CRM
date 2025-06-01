@@ -1,25 +1,24 @@
 package gleb.blum.examensarbete.models;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Entity
+@Document(collection = "contacts")
 @AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
 public class Contact {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String id;
 
-    @OneToOne(mappedBy = "Customer")
-    private Customer customer;
+    private String role;
+    private String name;
 
-
+    // This represents the "manages" relationship in the diagram
+    private String managesId;
 }

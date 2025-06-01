@@ -1,22 +1,28 @@
 package gleb.blum.examensarbete.models;
 
-
-import gleb.blum.examensarbete.Status.OrderStatus;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity
+@Document(collection = "orders")
 public class Order {
     @Id
-    private String id;
-    private LocalDateTime orderDate;
-    private BigDecimal total;
-
-    @ManyToOne
+    private String id;  // O-ID in the diagram
+    private LocalDateTime date;
+    private String status;
+    private BigDecimal amount;
+    @DBRef
     private Customer customer;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    @DBRef
+    private List<Product> products;
+
+    @DBRef
+    private List<Service> services;
+
+    private String description;  // Based on the diagram attribute
 }
