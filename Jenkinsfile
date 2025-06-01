@@ -57,12 +57,12 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    // Build backend Docker image
+
                     dir('backend') {
                         sh 'docker build -t ${DOCKER_REGISTRY}/${IMAGE_NAME}-backend:${IMAGE_TAG} .'
                     }
 
-                    // Build frontend Docker image
+
                     dir('frontend') {
                         sh 'docker build -t ${DOCKER_REGISTRY}/${IMAGE_NAME}-frontend:${IMAGE_TAG} .'
                     }
@@ -94,9 +94,18 @@ pipeline {
             }
         }
 
+        stage('Deploy to EC2') {
+                    steps {
+                        sshagent(['aws-ec2-key']) {
+                            sh "scp target/*.jar ec2-user@your-instance:/home/ec2-user"
+                            sh "ssh ec2-user@your-instance 'sudo systemctl restart crm-service'"
+                        }
+                    }
+                }
+
         stage('Deploy to Development') {
             when {
-                branch 'main'  // Only deploy when on main branch
+                branch 'main'
             }
             steps {
                 // This could be a script that updates AWS ECS service or runs docker-compose on a remote host
