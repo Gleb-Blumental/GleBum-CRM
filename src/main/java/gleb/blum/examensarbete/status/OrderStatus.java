@@ -1,4 +1,11 @@
 package gleb.blum.examensarbete.status;
 
-public class OrderStatus {
+public enum OrderStatus {
+    NEW,
+    PROCESSING,
+    COMPLETED,
+    CANCELLED,
+    ON_HOLD,
+    PAID,
+    REFUNDED
 }

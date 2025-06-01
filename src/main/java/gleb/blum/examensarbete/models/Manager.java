@@ -11,11 +11,11 @@ import java.util.List;
 @Data
 public class Manager {
     @Id
-    private String id;  // M-ID in the diagram
+    private String id;
 
     private String name;
     private String email;
 
     @DBRef
-    private List<Employee> employees;  // Manages employees relationship
+    private List<Worker> employees;
 }

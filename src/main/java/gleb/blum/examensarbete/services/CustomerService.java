@@ -1,5 +1,7 @@
 package gleb.blum.examensarbete.services;
 
+import gleb.blum.examensarbete.DTO.CustomerDTO;
+import gleb.blum.examensarbete.exceptions.ResourceNotFoundException;
 import gleb.blum.examensarbete.models.Customer;
 import gleb.blum.examensarbete.repositories.CustomerRepository;
 import gleb.blum.examensarbete.status.CustomerStatus;
@@ -17,7 +19,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> getAllCustomers() {
+    public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
@@ -25,16 +27,14 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
 
-    public Customer createCustomer(Customer customer) {
-
+    public Customer createCustomer(CustomerDTO dto) {
+        Customer customer = dto.toEntity();
         return customerRepository.save(customer);
     }
 
     public Customer updateCustomer(String id, Customer customerDetails) {
-
         return customerRepository.findById(id)
             .map(existingCustomer -> {
-
                 existingCustomer.setName(customerDetails.getName());
                 existingCustomer.setEmail(customerDetails.getEmail());
                 existingCustomer.setPhone(customerDetails.getPhone());
@@ -51,8 +51,7 @@ public class CustomerService {
         customerRepository.delete(customer);
     }
 
-
-    public List<Customer> findCustomersByStatus(CustomerStatus status) {
+    public List<Customer> getCustomersByStatus(CustomerStatus status) {
         return customerRepository.findByStatus(status);
     }
 }
