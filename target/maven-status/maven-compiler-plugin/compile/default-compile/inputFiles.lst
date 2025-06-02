@@ -2,6 +2,7 @@ C:\examensarbete\src\main\java\gleb\blum\examensarbete\CognitoAuth\CognitoJwtAut
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\CognitoAuth\SecurityConfig.java
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\CognitoAuth\TokenValidationService.java
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\config\DataInitializer.java
+C:\examensarbete\src\main\java\gleb\blum\examensarbete\config\MongoConfig.java
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\controllers\AdminController.java
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\controllers\CustomerController.java
 C:\examensarbete\src\main\java\gleb\blum\examensarbete\controllers\OrderController.java

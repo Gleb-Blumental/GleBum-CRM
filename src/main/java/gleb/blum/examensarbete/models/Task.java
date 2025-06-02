@@ -17,6 +17,7 @@ public class Task {
     private TaskStatus status;
     private LocalDateTime created = LocalDateTime.now();
     private LocalDateTime deadline;
+    private String assignedEmployeeId;
 
     @DBRef
     private Order order;
