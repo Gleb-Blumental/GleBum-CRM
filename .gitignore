@@ -404,12 +404,12 @@ FodyWeavers.xsd
 # Extensions ignore
 /.env
 /.continue/
+src/.env
 
-src/main/resources/application.yml
+# Allow .env.template to be committed
+!.env.template
 
 src/main/resources/application.yml
 target/classes/application.yml
-src/.env
 
-*.yml
 *.yml

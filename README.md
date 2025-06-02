@@ -303,7 +303,7 @@ The application uses MongoDB Atlas as its database. The database schema includes
    mongosh "your-connection-string"
    ```
 
-### WIP
+# WIP
 
 ## Deployment 
 
