@@ -7,18 +7,22 @@ import com.mongodb.client.MongoClients;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import java.io.IOException;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "gleb.blum.examensarbete.repositories")
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Value("${spring.data.mongodb.uri}")
+    @Value("${MONGODB_URI}")
     private String mongoUri;
 
-    @Value("${spring.data.mongodb.database}")
+    @Value("${MONGODB_DATABASE:examensarbete}")
     private String databaseName;
 
     @Override
