@@ -410,5 +410,6 @@ src/main/resources/application.yml
 src/main/resources/application.yml
 target/classes/application.yml
 src/.env
-src/main/resources/application.yml
-target/classes/application.yml
+
+*.yml
+*.yml
