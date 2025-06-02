@@ -11,9 +11,10 @@ import java.math.BigDecimal;
 public class Service {
     @Id
     private String id;
-
     private String name;
-    private BigDecimal price;
     private String description;
-
+    private String category;
+    private BigDecimal price;
+    private Integer estimatedHours;
+    private boolean active = true;
 }

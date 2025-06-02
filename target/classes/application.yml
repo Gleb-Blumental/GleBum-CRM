@@ -1,13 +1,36 @@
-spring:
   application:
     name: examensarbete
-  datasource:
-    url: jdbc:mysql://localhost:3306/examensarbete
-    username: admin
-    password: password
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+
+  # MongoDB Configuration
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@crm-db-cluster.khilg2i.mongodb.net/examensarbete?retryWrites=true&w=majority
+      auto-index-creation: true
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+      authentication-database: admin
+      connection-pool:
+        max-size: 100
+        min-size: 5
+        max-wait-time: 15000
+        max-connection-life-time: 30000
+        max-connection-idle-time: 60000
+        maintenance-frequency: 30000
+        maintenance-initial-delay: 0
+
+security:
+  oauth2:
+    client:
+      provider:
+        cognito:
+          issuerUri: https://cognito-idp.eu-north-1.amazonaws.com/{poolId}
+      registration:
+        cognito:
+          clientId: ${COGNITO_CLIENT_ID}
+          clientSecret: ${COGNITO_CLIENT_SECRET}
+          scope: openid,email
+
+
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG

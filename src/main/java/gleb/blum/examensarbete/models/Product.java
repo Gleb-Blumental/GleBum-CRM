@@ -11,9 +11,11 @@ import java.math.BigDecimal;
 public class Product {
     @Id
     private String id;
-
     private String name;
+    private String description;
+    private String category;
     private BigDecimal price;
-
-
+    private Integer stock;
+    private String sku; // Stock Keeping Unit
+    private boolean active = true;
 }
