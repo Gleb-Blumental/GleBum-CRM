@@ -9,10 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Admin {
     @Id
-    private String id;  // A-ID in the diagram
+    private String id;
     private String name;
     private String email;
-    private String dept;  // Department field from the diagram
-
-    // The diagram shows admin manages employees and has a connection to CRM
+    private String dept;
 }

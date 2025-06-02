@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class Order {
     @Id
-    private String id;  // O-ID in the diagram
+    private String id;
     private LocalDateTime date;
     private String status;
     private BigDecimal amount;
@@ -26,5 +26,5 @@ public class Order {
     @DBRef
     private List<Service> services;
 
-    private String description;  // Based on the diagram attribute
+    private String description;
 }

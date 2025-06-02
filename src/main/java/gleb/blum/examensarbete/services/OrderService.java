@@ -49,20 +49,19 @@ public class OrderService {
     public Order createOrder(OrderDTO orderDTO) {
         Order order = new Order();
 
-        // Set basic order details
+
         order.setDate(LocalDateTime.now());
         order.setStatus(OrderStatus.NEW.name());
         order.setAmount(orderDTO.getAmount());
         order.setDescription(orderDTO.getDescription());
 
-        // Set customer
+
         if (orderDTO.getCustomerId() != null) {
             Customer customer = customerRepository.findById(orderDTO.getCustomerId())
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id: " + orderDTO.getCustomerId()));
             order.setCustomer(customer);
         }
 
-        // Set products
         if (orderDTO.getProductIds() != null && !orderDTO.getProductIds().isEmpty()) {
             List<Product> products = new ArrayList<>();
             for (String productId : orderDTO.getProductIds()) {
@@ -73,7 +72,6 @@ public class OrderService {
             order.setProducts(products);
         }
 
-        // Set services
         if (orderDTO.getServiceIds() != null && !orderDTO.getServiceIds().isEmpty()) {
             List<Service> services = new ArrayList<>();
             for (String serviceId : orderDTO.getServiceIds()) {
@@ -91,7 +89,7 @@ public class OrderService {
         Order existingOrder = orderRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Order not found with id: " + id));
 
-        // Update basic order details
+        // Update order details
         if (orderDTO.getStatus() != null) {
             existingOrder.setStatus(orderDTO.getStatus());
         }

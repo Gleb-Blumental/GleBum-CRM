@@ -11,11 +11,9 @@ import java.util.List;
 @Data
 public class Worker {
     @Id
-    private String id;  // E-ID in the diagram
+    private String id;
     private String name;
     private String email;
     @DBRef
-    private List<Task> tasks;  // Tasks assigned to the employee
-
-    // Manager relationship is handled from the Manager side
+    private List<Task> tasks;
 }

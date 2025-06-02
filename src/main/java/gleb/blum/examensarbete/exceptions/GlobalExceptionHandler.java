@@ -1,17 +1,12 @@
 package gleb.blum.examensarbete.exceptions;
 
-
-import jakarta.ws.rs.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,5 +32,31 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    // Other exception handlers
+    static class ErrorResponse {
+        private String status;
+        private String message;
+        private Map<String, String> errors;
+
+        public ErrorResponse(String status, String message) {
+            this.status = status;
+            this.message = message;
+        }
+
+        public ErrorResponse(String status, String message, Map<String, String> errors) {
+            this.status = status;
+            this.message = message;
+            this.errors = errors;
+        }
+
+        public String getStatus() { return status; }
+        public String getMessage() { return message; }
+        public Map<String, String> getErrors() { return errors; }
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ErrorResponse> handleMissingParams(MissingServletRequestParameterException ex) {
+        String message = ex.getParameterName() + " parameter is missing";
+        ErrorResponse error = new ErrorResponse("MISSING_PARAMETER", message);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 }

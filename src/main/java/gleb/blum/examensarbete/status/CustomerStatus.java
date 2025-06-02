@@ -1,4 +1,11 @@
 package gleb.blum.examensarbete.status;
 
-public class CustomerStatus {
+public enum CustomerStatus {
+    LEAD,
+    CONTACTED,
+    QUALIFIED,
+    PROPOSAL_SENT,
+    NEGOTIATION,
+    CLOSED_WON,
+    CLOSED_LOST
 }

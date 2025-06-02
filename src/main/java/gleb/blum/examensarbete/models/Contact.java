@@ -18,7 +18,5 @@ public class Contact {
 
     private String role;
     private String name;
-
-    // This represents the "manages" relationship in the diagram
     private String managesId;
 }

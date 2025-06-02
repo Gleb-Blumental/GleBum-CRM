@@ -24,6 +24,4 @@ public class Task {
     @DBRef
     private Ticket ticket;
 
-    // This is handled from the Worker side to avoid circular references
-    // The worker.tasks list will contain this task
 }

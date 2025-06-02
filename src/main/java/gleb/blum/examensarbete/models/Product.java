@@ -16,6 +16,6 @@ public class Product {
     private String category;
     private BigDecimal price;
     private Integer stock;
-    private String sku; // Stock Keeping Unit
+    private String sku;
     private boolean active = true;
 }

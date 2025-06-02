@@ -1,10 +1,11 @@
 package gleb.blum.examensarbete.config;
 
+import gleb.blum.examensarbete.models.AdminRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import gleb.blum.examensarbete.repository.CRMRepository;
-import gleb.blum.examensarbete.repository.AdminRepository;
+import gleb.blum.examensarbete.repositories.CRMRepository;
+import gleb.blum.examensarbete.repositories.AdminRepository;
 import gleb.blum.examensarbete.models.CRM;
 import gleb.blum.examensarbete.models.Admin;
 
@@ -28,6 +29,7 @@ public class DataInitializer implements CommandLineRunner {
             crm.setWebsiteName("CRM System");
             crm.setWebsiteUrl("https://crm.example.com");
             crmRepository.save(crm);
+            System.out.println("Default CRM initialized");
         }
 
         // Initialize admin if not exists
@@ -35,8 +37,9 @@ public class DataInitializer implements CommandLineRunner {
             Admin admin = new Admin();
             admin.setName("System Administrator");
             admin.setEmail("admin@example.com");
-            admin.setRole("SUPER_ADMIN");
+            admin.setRole(AdminRole.SUPER_ADMIN);
             adminRepository.save(admin);
+            System.out.println("Default Admin initialized");
         }
     }
 }
