@@ -1,6 +1,7 @@
 package gleb.blum.examensarbete.controllers;
 
 import gleb.blum.examensarbete.DTO.CustomerDTO;
+import gleb.blum.examensarbete.exceptions.ResourceNotFoundException;
 import gleb.blum.examensarbete.status.CustomerStatus;
 import gleb.blum.examensarbete.models.Customer;
 import gleb.blum.examensarbete.services.CustomerService;

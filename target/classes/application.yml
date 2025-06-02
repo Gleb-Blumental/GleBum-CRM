@@ -1,3 +1,4 @@
+spring:
   application:
     name: examensarbete
 
@@ -28,7 +29,6 @@ security:
           clientId: ${COGNITO_CLIENT_ID}
           clientSecret: ${COGNITO_CLIENT_SECRET}
           scope: openid,email
-
 
 logging:
   level:

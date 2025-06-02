@@ -1,5 +1,6 @@
 package gleb.blum.examensarbete.models;
 
+import gleb.blum.examensarbete.status.CustomerStatus;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Customer {
     private String name;
     private String email;
     private String phone;
+    private CustomerStatus status;
     @DBRef
     private List<Order> orders;
 
