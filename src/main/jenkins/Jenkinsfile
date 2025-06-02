@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_REGISTRY = 'your-registry-url'  // e.g., Docker Hub username or ECR URL
+        DOCKER_REGISTRY = 'your-registry-url' 
         IMAGE_NAME = 'crm-application'
         IMAGE_TAG = "v${env.BUILD_NUMBER}"
     }
@@ -83,7 +83,7 @@ pipeline {
 
         stage('Push Docker Images') {
             when {
-                branch 'main'  // Only push images when on main branch
+                branch 'main'
             }
             steps {
                 withCredentials([string(credentialsId: 'docker-registry-token', variable: 'DOCKER_TOKEN')]) {
@@ -108,9 +108,9 @@ pipeline {
                 branch 'main'
             }
             steps {
-                // This could be a script that updates AWS ECS service or runs docker-compose on a remote host
+              
                 sh 'echo "Deploying to development environment"'
-                // Example: sh 'ssh user@dev-server "cd /app && docker-compose pull && docker-compose up -d"'
+             
             }
         }
     }
