@@ -1,4 +1,4 @@
-# CRM System - Examensarbete
+# CRM System - Gleb Blumental
 
 A comprehensive Customer Relationship Management (CRM) system built with Spring Boot and MongoDB. This application provides functionality for managing customers, orders, products, services, tickets, and tasks.
 
