@@ -21,14 +21,26 @@ The application is containerized using Docker with a multi-container setup defin
 
 1. Make sure Docker and Docker Compose are installed on your system
 2. Create a `.env` file in the project root based on `.env.template`
-3. From the project root, run:
+3. Use the provided scripts to run Docker Compose:
 
+**For Windows:**
 ```bash
 cd src/main/docker
-docker-compose up -d
+run-docker.bat
 ```
 
-This will start all services in detached mode. You can access:
+**For Linux/macOS:**
+```bash
+cd src/main/docker
+chmod +x run-docker.sh
+./run-docker.sh
+```
+
+These scripts will:
+- Copy the `.env` file from the project root to the docker directory
+- Start all services in detached mode
+
+You can access:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8080
 - MongoDB: mongodb://localhost:27017
@@ -44,6 +56,8 @@ To view logs:
 ```bash
 docker-compose logs -f
 ```
+
+**Note:** The scripts ensure that environment variables from your `.env` file are properly loaded by Docker Compose, avoiding the need to hardcode sensitive information.
 
 ## AWS Cognito Configuration
 
