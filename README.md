@@ -24,6 +24,8 @@ A comprehensive Customer Relationship Management (CRM) system built with Spring 
 - Spring Security
 - Spring Data MongoDB
 - MongoDB Atlas
+- AWS EC2
+- AWS S3
 - AWS Cognito for Authentication
 - Maven
 - Docker
@@ -37,6 +39,7 @@ Before you begin, ensure you have the following installed:
 - Maven
 - Docker (optional, for containerization)
 - MongoDB Compass (optional, for database visualization)
+- IDE, Eclipse or Intellij IDEA
 
 ## Installation
 
@@ -53,7 +56,7 @@ Before you begin, ensure you have the following installed:
 
 ## Environment Configuration
 
-The application uses environment variables for configuration. Create a `.env` file in the root directory with the following variables:
+The application uses environment variables for configuration. Use the example .env file in the root directory with the following variables:
 
 ```
 # MongoDB Atlas Configuration
