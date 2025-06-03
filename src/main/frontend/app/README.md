@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# ExamensArbete Frontend Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the React frontend application for the ExamensArbete project. It provides a user interface for interacting with the backend services and integrates with AWS Cognito for authentication.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Welcome page with central content window
+- Authentication with AWS Cognito
+- Responsive design
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Install dependencies:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Create a `.env` file in the root of the app directory with the following variables:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+REACT_APP_API_URL=http://localhost:8080/api
+REACT_APP_COGNITO_REGION=eu-north-1
+REACT_APP_COGNITO_USER_POOL_ID=eu-north-1_NlfnzCNIn
+REACT_APP_COGNITO_APP_CLIENT_ID=7kcplepb7r7spt5jnjco3fecnl
+REACT_APP_COGNITO_REDIRECT_URI=http://localhost:3000/callback
+REACT_APP_COGNITO_DOMAIN=https://eu-north-1nlfnzcnin.auth.eu-north-1.amazoncognito.com
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Replace these values with your actual AWS Cognito configuration.
 
-### `npm run eject`
+### Running the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Building for Production
 
-## Learn More
+To create a production build:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This will create optimized files in the `build` directory that can be deployed to a web server.
 
-### Code Splitting
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Variable | Description |
+|----------|-------------|
+| `REACT_APP_API_URL` | The URL of the backend API |
+| `REACT_APP_COGNITO_REGION` | AWS region where your Cognito User Pool is located |
+| `REACT_APP_COGNITO_USER_POOL_ID` | ID of your Cognito User Pool |
+| `REACT_APP_COGNITO_APP_CLIENT_ID` | Client ID for your Cognito App Client |
+| `REACT_APP_COGNITO_REDIRECT_URI` | URI where Cognito will redirect after authentication |
+| `REACT_APP_COGNITO_DOMAIN` | Domain of your Cognito User Pool |
 
-### Analyzing the Bundle Size
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+src/
+├── components/         # React components
+│   ├── Callback.js     # Handles OAuth callback from Cognito
+│   ├── Header.js       # Application header with login button
+│   ├── Login.js        # Login redirect component
+│   └── Welcome.js      # Welcome page with central content
+├── services/           # Service modules
+│   ├── ApiService.js   # Handles API requests to the backend
+│   └── AuthService.js  # Manages authentication with Cognito
+├── App.js              # Main application component
+└── index.js            # Application entry point
+```
 
-### Making a Progressive Web App
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+For deployment instructions, see the main project README or the EC2 deployment guide in the `src/main/docker` directory.
 
-### Advanced Configuration
+## AWS Cognito Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This application integrates with AWS Cognito for authentication. When a user clicks the "Login / Sign Up" button, they are redirected to the Cognito hosted UI for authentication. After successful authentication, Cognito redirects back to the application's callback URL, where the application processes the authentication response.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In development mode, the application simulates the authentication flow without actually redirecting to Cognito. In production, it uses the actual Cognito hosted UI.

@@ -54,7 +54,6 @@ public class TokenValidationService {
             JWSAlgorithm expectedJWSAlg = JWSAlgorithm.RS256;
             
             // Configure the JWT processor with a key selector to feed matching public
-            // keys sourced from the JWK set URL
             JWSKeySelector<SecurityContext> keySelector = new JWSVerificationKeySelector<>(expectedJWSAlg, jwkSource);
             jwtProcessor.setJWSKeySelector(keySelector);
 

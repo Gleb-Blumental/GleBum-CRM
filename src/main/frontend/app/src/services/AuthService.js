@@ -3,11 +3,12 @@
  */
 class AuthService {
   constructor() {
-    // These values would typically come from environment variables
-    this.region = process.env.REACT_APP_COGNITO_REGION || 'eu-north-1';
-    this.userPoolId = process.env.REACT_APP_COGNITO_USER_POOL_ID || 'eu-north-1_NlfnzCNIn';
-    this.clientId = process.env.REACT_APP_COGNITO_APP_CLIENT_ID || '7kcplepb7r7spt5jnjco3fecnl';
-    this.redirectUri = process.env.REACT_APP_COGNITO_REDIRECT_URI || 'http://localhost:3000/callback';
+    // Get all values from environment variables
+    this.region = process.env.REACT_APP_COGNITO_REGION;
+    this.userPoolId = process.env.REACT_APP_COGNITO_USER_POOL_ID;
+    this.clientId = process.env.REACT_APP_COGNITO_APP_CLIENT_ID;
+    this.redirectUri = process.env.REACT_APP_COGNITO_REDIRECT_URI;
+    this.cognitoDomain = process.env.REACT_APP_COGNITO_DOMAIN;
     
     // For development/testing, we'll use localStorage to simulate token storage
     this.tokenKey = 'auth_token';
@@ -19,17 +20,8 @@ class AuthService {
    * @returns {string} The Cognito login URL
    */
   getLoginUrl() {
-    // For direct Cognito integration, use this URL
-    // This is the actual Cognito hosted UI URL
-    const cognitoDomain = `https://${this.userPoolId.split('_')[0]}.auth.${this.region}.amazoncognito.com`;
-    const loginUrl = `${cognitoDomain}/login?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}`;
-    
-    // For testing in development, you can uncomment this to use the placeholder
-    // if (process.env.NODE_ENV === 'development') {
-    //   return '/login';
-    // }
-    
-    // Always return the actual Cognito URL
+    // Use the domain from environment variables
+    const loginUrl = `${this.cognitoDomain}/login?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}`;
     return loginUrl;
   }
 
@@ -105,12 +97,9 @@ class AuthService {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
     
-    // In a real implementation, you would redirect to the Cognito logout URL
-    if (process.env.NODE_ENV !== 'development') {
-      const cognitoDomain = `https://${this.userPoolId}.auth.${this.region}.amazoncognito.com`;
-      const logoutUrl = `${cognitoDomain}/logout?client_id=${this.clientId}&logout_uri=${encodeURIComponent(window.location.origin)}`;
-      window.location.href = logoutUrl;
-    }
+    // Redirect to the Cognito logout URL
+    const logoutUrl = `${this.cognitoDomain}/logout?client_id=${this.clientId}&logout_uri=${encodeURIComponent(window.location.origin)}`;
+    window.location.href = logoutUrl;
   }
 
   /**

@@ -416,3 +416,5 @@ target/classes/application.yml
 target/classes/application.yml
 src/main/resources/application.yml
 src/main/docker/EC2-DEPLOYMENT-GUIDE.md
+src/main/frontend/app/.env
+/target

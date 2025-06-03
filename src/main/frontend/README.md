@@ -69,11 +69,3 @@ docker build -t examensarbete-frontend .
 docker run -p 80:80 examensarbete-frontend
 ```
 
-## AWS Cognito Integration
-
-The application is designed to integrate with AWS Cognito for authentication. Currently, this is implemented as a placeholder, but it can be easily extended to work with a real Cognito User Pool.
-
-To configure Cognito integration:
-
-1. Update the `AuthService.js` file with your Cognito User Pool details
-2. Implement token handling and user session management

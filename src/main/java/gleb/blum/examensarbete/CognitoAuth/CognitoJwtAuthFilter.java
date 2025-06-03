@@ -77,7 +77,7 @@ public class CognitoJwtAuthFilter extends OncePerRequestFilter {
             }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Error processing JWT token: " + e.getMessage(), e);
-            // Do not set authentication
+            
         }
 
         // Continue the filter chain
