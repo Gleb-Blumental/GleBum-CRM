@@ -415,3 +415,4 @@ target/classes/application.yml
 *.yml
 target/classes/application.yml
 src/main/resources/application.yml
+src/main/docker/EC2-DEPLOYMENT-GUIDE.md
