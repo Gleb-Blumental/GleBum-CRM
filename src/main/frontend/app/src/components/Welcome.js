@@ -8,25 +8,25 @@ const Welcome = () => {
       <Header />
       <main className="welcome-content">
         <div className="welcome-card">
-          <h2>Welcome to ExamensArbete</h2>
+          <h2>Welcome to my CRM</h2>
           <div className="placeholder-section">
             <h3>System Overview</h3>
-            <p>This is a placeholder for the system overview information. In a real application, this would contain actual data.</p>
+            <p>Everything is working as expected</p>
           </div>
           <div className="placeholder-section">
             <h3>Recent Activity</h3>
             <ul className="placeholder-list">
-              <li>Placeholder activity item 1</li>
-              <li>Placeholder activity item 2</li>
-              <li>Placeholder activity item 3</li>
+              <li>Jane Doe</li>
+              <li>Ulf Kristersson</li>
+              <li>Gleb Blumental</li>
             </ul>
           </div>
           <div className="placeholder-section">
             <h3>Quick Actions</h3>
             <div className="action-buttons">
-              <button className="action-button">Action 1</button>
-              <button className="action-button">Action 2</button>
-              <button className="action-button">Action 3</button>
+              <button className="action-button">Button for Work</button>
+              <button className="action-button">Button for Client</button>
+              <button className="action-button">Button for an amazing function</button>
             </div>
           </div>
         </div>

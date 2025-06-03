@@ -30,7 +30,7 @@ const Header = () => {
     <header className="header">
       <div className="logo">
         <Link to="/">
-          <h1>ExamensArbete</h1>
+          <h1>Glebski CRM</h1>
         </Link>
       </div>
       <div className="nav-links">

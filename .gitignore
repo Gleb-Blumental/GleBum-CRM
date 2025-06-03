@@ -419,3 +419,4 @@ src/main/docker/EC2-DEPLOYMENT-GUIDE.md
 src/main/frontend/app/.env
 /target
 pom.xml
+target/classes/application.properties

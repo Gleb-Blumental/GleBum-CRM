@@ -27,7 +27,7 @@ public class CognitoLogoutHandler extends SimpleUrlLogoutSuccessHandler {
     /**
      * An allowed callback URL.
      */
-    @Value("${cognito.logout.uri}")
+    @Value("${cognito.logoutUri}")
     private String logoutRedirectUrl;
 
     /**

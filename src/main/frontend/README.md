@@ -6,18 +6,18 @@ This is the frontend application for the ExamensArbete project. It's built with 
 
 ```
 src/main/frontend/
-├── app/                  # React application
-│   ├── public/           # Public assets
+├── app/                         # React application
+│   ├── public/                  # Public assets
 │   └── src/
-│       ├── components/   # React components
-│       │   ├── Header.js     # Application header with login/logout button
-│       │   ├── Welcome.js    # Welcome page with central content window
-│       │   └── Login.js      # Login redirect component
-│       ├── services/     # Service modules
-│       │   └── AuthService.js # Authentication service for Cognito integration
-│       ├── App.js        # Main application component with routing
-│       └── index.js      # Application entry point
-└── Dockerfile            # Docker configuration for production build
+│       ├── components/          # React components
+│       │   ├── Header.js        # Application header with login/logout button
+│       │   ├── Welcome.js       # Welcome page with central content window
+│       │   └── Login.js         # Login redirect component
+│       ├── services/            # Service modules
+│       │   └── AuthService.js   # Authentication service for Cognito integration
+│       ├── App.js               # Main application component with routing
+│       └── index.js             # Application entry point
+└── Dockerfile                   # Docker configuration for production build
 ```
 
 ## Features
