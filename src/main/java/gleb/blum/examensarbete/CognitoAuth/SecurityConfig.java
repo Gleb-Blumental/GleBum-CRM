@@ -20,6 +20,9 @@ public class SecurityConfig {
 
     @Autowired
     private CognitoJwtAuthFilter cognitoJwtAuthFilter;
+    
+    @Autowired
+    private CognitoLogoutHandler cognitoLogoutHandler;
 
     @Value("${security.oauth2.client.provider.cognito.issuerUri:#{null}}")
     private String issuerUri;
@@ -34,7 +37,18 @@ public class SecurityConfig {
                 .requestMatchers("/api/manager/**").hasAnyRole("ADMIN", "MANAGER")
                 .anyRequest().authenticated()
             )
-            .addFilterBefore(cognitoJwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(cognitoJwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessHandler(cognitoLogoutHandler)
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+            )
+            .oauth2Login(oauth2 -> oauth2
+                .loginPage("/oauth2/authorization/cognito")
+                .defaultSuccessUrl("/", true)
+            );
 
         return http.build();
     }

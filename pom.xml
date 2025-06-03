@@ -149,6 +149,12 @@
 			<version>9.37.3</version>
 		</dependency>
 		
+		<!-- Spring Security OAuth2 Client -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		
 		<!-- .env  -->
 		<dependency>
 			<groupId>me.paulschwarz</groupId>
