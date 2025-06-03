@@ -19,10 +19,22 @@ class AuthService {
    * Get the Cognito login URL
    * @returns {string} The Cognito login URL
    */
-  getLoginUrl() {
-    // Use the domain from environment variables
-    const loginUrl = `${this.cognitoDomain}/login?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}`;
-    return loginUrl;
+  async getLoginUrl() {
+    try {
+      // Get the login URL from the backend API
+      const response = await fetch('/api/auth/login-url');
+      if (!response.ok) {
+        throw new Error('Failed to get login URL');
+      }
+      
+      const data = await response.json();
+      return data.loginUrl;
+    } catch (error) {
+      console.error('Error getting login URL:', error);
+      
+      // Fallback to constructing the URL directly
+      return `${this.cognitoDomain}/login?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}`;
+    }
   }
 
   /**

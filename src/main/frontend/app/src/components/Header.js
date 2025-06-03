@@ -8,8 +8,15 @@ const Header = () => {
   const isAuthenticated = AuthService.isAuthenticated();
   
   // Handle login by redirecting to the Cognito login page
-  const handleLogin = () => {
-    window.location.href = AuthService.getLoginUrl();
+  const handleLogin = async () => {
+    try {
+      const loginUrl = await AuthService.getLoginUrl();
+      window.location.href = loginUrl;
+    } catch (error) {
+      console.error('Error getting login URL:', error);
+      // Fallback to the login page
+      window.location.href = '/login';
+    }
   };
   
   // Handle logout
