@@ -290,21 +290,13 @@ The application uses MongoDB Atlas as its database. The database schema includes
 
 ### Connecting to MongoDB
 
-#### Using MongoDB Compass
+#### Using MongoDB Atlas
 
-1. Download and install [MongoDB Compass](https://www.mongodb.com/products/compass)
-2. Open MongoDB Compass
-3. Use the connection string from your `.env` file
-4. Click "Connect"
+1. Register at [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Create a cluster in Atlas
+3. Get a connection string in "Connect" button
+4. Paste the connection string into .env file
 
-#### Using MongoDB Shell
-
-1. Install [MongoDB Shell](https://www.mongodb.com/try/download/shell)
-2. Open a terminal or command prompt
-3. Run the following command:
-   ```
-   mongosh "your-connection-string"
-   ```
 
 # WIP
 
